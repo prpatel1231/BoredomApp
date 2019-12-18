@@ -2,7 +2,7 @@
 
 Our App is called the Boredom App, we are working to help provide ideas for activities for people who have nothing to do. 
 
-<img alt ="mockup" src ="assets/images/BoredomApp.png"> 
+<img alt ="mockup" src ="assets/images/BoredomApp.PNG"> 
 
 
 Our Team Consists of 
