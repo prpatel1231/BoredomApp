@@ -1,0 +1,26 @@
+#background333 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+
+.background2{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+     
+     
+    /* background-image: url("https://www.fourthwallevents.com/wp-content/uploads/2016/12/SetWidth1920-A-championship-event10.jpg"); */
+}
+
+#searchAndButton {
+    margin-left: 330px;
+    width: 56%
+    
+}
+.body{
+    background-image: url("https://www.fourthwallevents.com/wp-content/uploads/2016/12/SetWidth1920-A-championship-event10.jpg");
+}
+
