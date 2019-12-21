@@ -1,0 +1,49 @@
+*{box-sizing: border-box;}
+body{
+    margin: auto;
+    width: 960;
+}
+
+.container{
+    width: 960;
+    height: 80;
+}
+.event1{width: 237px;
+    float: left;
+    padding-left: 5px;
+    height: 80px;
+    background-color: yellowgreen;
+}
+
+.event2{width: 237px;
+    float: left;
+    padding-inline:3px; 
+    height: 80px;
+    background-color: violet;
+
+}
+
+
+.event3{width: 237px;
+float: left;
+padding-inline: 3px;
+height: 80px;
+background-color: teal;
+}
+
+
+
+.event4{width: 237px;
+    float: left;
+    padding-inline: 3px;
+    height: 80px;
+    background-color: blue;
+}
+
+
+
+
+          
+          
+
+
