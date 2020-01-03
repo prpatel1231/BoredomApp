@@ -22,7 +22,7 @@ $("button").on("click", function () {
   var city = $("input").val().split();
   var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=f299017fc79bef68bd06401cc604c72e";
 
-  var queryURL2= "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc" ;
+  var queryURL2= "https://app.ticketmaster.com/discovery/v2/events.json?&city=" + city + "&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc" ;
 
   //  var queryURL3= "https://developers.zomato.com/api/v2.1/?&apikey=e889ae928be4b3283e45fbbf217c6dfb"
 
@@ -68,29 +68,35 @@ $("button").on("click", function () {
       .then(function (response) {
         console.log(response);
 
-        var eventLink=response._embedded.events[0].url;
-        console.log(eventLink);
+        for (var i = 0; i <= response._embedded.events.length; i++){
+          var eventLink=response._embedded.events[i].url;
 
-        var eventButton = $("<button>").text("Buy Ticket");
-        eventButton.addClass("button is-link")
-        eventButton.attr("onclick", "window.location.href='"+ eventLink+"';");
+          var eventButton = $("<button>").text("Buy Ticket");
+          eventButton.addClass("button is-link")
+          eventButton.attr("onclick", "window.location.href='"+ eventLink+"';");
         
+          var eventName = response._embedded.events[i].name;
 
-        var eventName = response._embedded.events[0].name;
+          var eventTitle = $("<h5>").text(eventName);
+          eventTitle.addClass("card-header-title");
+        
+          var eventImage = $("<img>");
+          eventImage.addClass("card-image")
+          eventImage.attr("src", response._embedded.events[i].images[0].url );
 
-        var eventTitle = $("<h5>").text(eventName);
-        eventTitle.addClass("card-header-title");
-        
-        console.log(response._embedded.events[0].images[0].url)
-        var eventImage = $("<img>");
-        eventImage.addClass("card-image")
-        eventImage.attr("src", response._embedded.events[0].images[0].url );
+          var eventVenue = $("<p>").text("Venue: " + response._embedded.events[i]._embedded.venues[0].name);
+          eventVenue.addClass("card-body");
 
-        
-        
-        $("#events").append(eventImage);
-        $("#events").append(eventTitle);
-        $("#events").append(eventButton);
+          $("#events").append(eventTitle);
+
+          $("#events").append(eventImage);
+          $("#events").append(eventVenue);
+         
+          $("#events").append(eventButton);
+
+        };
+
+      
 
       
       });
@@ -129,19 +135,19 @@ $("button").on("click", function () {
         var filmCard = $("<div>");
         filmCard.addClass("card");
         filmCard.attr("id", filmName);
-
-        var filmPic = $("<img>");
-        filmPic.attr("src",filmImage);
-        filmPic.addClass("card-image");
-        filmCard.append(filmPic);
         
         var filmCardBody = $("<div>");
         filmCardBody.addClass("card-body");
-        filmCard.append(filmCardBody);
+        filmCard.prepend(filmCardBody);
         
-        var filmTitle = $("<h5>").text(filmName + ": ");
+        var filmPic = $("<img>");
+        filmPic.attr("src",filmImage);
+        filmPic.addClass("card-image");
+        filmCardBody.append(filmPic);
+
+        var filmTitle = $("<h3>").text(filmName + ": ");
         filmTitle.addClass("card-header-title");
-        filmCardBody.append(filmTitle);
+        filmCardBody.prepend(filmTitle);
 
         var filmDescription = $("<p>").text("Plot: " + filmSynopsis);
         filmDescription.addClass("card-content")
