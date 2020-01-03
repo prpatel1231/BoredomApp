@@ -1,0 +1,130 @@
+#background333 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+
+#background{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+     
+     
+     background-image: url("https://www.fourthwallevents.com/wp-content/uploads/2016/12/SetWidth1920-A-championship-event10.jpg"); 
+}
+
+#searchAndButton {
+    margin-left: 330px;
+    width: 56%
+    
+}
+
+.body{
+    background-image: url("https://www.almanac.com/sites/default/files/styles/primary_image_in_article/public/image_nodes/cloudy-sky.jpg?itok=FDxeE-I5");
+}
+
+img{
+
+    width: 14rem;
+    
+}
+.card-text1 {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    text-align: center;
+    width: 14rem;
+    right: 30%;
+   
+
+  }
+
+  .wheatherInfo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 12px;
+    color: white;
+    
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+
+
+    
+  }
+  .temperature {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(11, 11, 12);
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: -1px 0 rgb(247, 244, 244), 0 1px rgb(250, 248, 248), 1px 0 rgb(250, 248, 248), 0 -1px rgb(250, 248, 248);
+
+
+
+
+    
+    
+  }
+  .feelsLike {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(11, 11, 12);
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: -1px 0 rgb(247, 244, 244), 0 1px rgb(250, 248, 248), 1px 0 rgb(250, 248, 248), 0 -1px rgb(250, 248, 248);
+
+
+
+
+
+    
+  }
+h1{
+  
+  color: white;
+  
+  font-size: 255px;
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#ex{
+  color: white;
+  
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+#button-addon2{
+  color: black;
+  background-color: whitesmoke;
+}
+
+#chx{
+  color: white;
+  
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: -1px 0 w, 0 1px black, 1px 0 black, 0 -1px black;
+}
