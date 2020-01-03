@@ -3,6 +3,7 @@ var date = new Date();
 var dateISO = date.toISOString();
 var lat = ""
 var long = ""
+var filmIds = [];
 
 var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
 google.maps.event.addListener(autocomplete, 'place_changed', function () {
@@ -119,6 +120,10 @@ $("button").on("click", function () {
         var filmName = response.films[i].film_name;
         var filmImage = response.films[i].images.poster[1].medium.film_image;
         var filmSynopsis = response.films[i].synopsis_long;
+        var filmId = response.films[i].film_id;
+        filmIds.push(filmId);
+
+        
           
         //create HTML elements for each movie
         var filmCard = $("<div>");
@@ -147,12 +152,16 @@ $("button").on("click", function () {
         };
 
       });
+
+  
+      });
+
       
 
 
      
 
-});
+
 
 
 
