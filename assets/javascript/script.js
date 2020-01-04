@@ -1,9 +1,8 @@
 var input = document.getElementById('autocomplete');
 var date = new Date();
 var dateISO = date.toISOString();
-var lat = ""
-var long = ""
-var hasSearched = false;
+var lat = "";
+var long = "";
 
 
 var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
@@ -21,12 +20,13 @@ google.maps.event.addListener(autocomplete, 'place_changed', function () {
 //click event to search for events and send various API requests
 $("button").on("click", function () {
 
+
   var city = $("input").val().split();
   var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=f299017fc79bef68bd06401cc604c72e";
 
-  var queryURL2= "https://app.ticketmaster.com/discovery/v2/events.json?&city=" + city + "&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc" ;
+  var queryURL2= "https://app.ticketmaster.com/discovery/v2/events.json?&city=" + city + "&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc";
 
-  var queryURL3= "https://developers.zomato.com/api/v2.1/search?count=20&" + "lat=" + lat + "&lon=" + long + "&radius=10000&sort=rating" + "&apikey=e889ae928be4b3283e45fbbf217c6dfb"
+  // var queryURL3= "https://developers.zomato.com/api/v2.1/search?count=20&" + "lat=" + lat + "&lon=" + long + "&radius=10000&sort=rating" + "&apikey=e889ae928be4b3283e45fbbf217c6dfb"
 
 
 //API call for weather data
@@ -84,7 +84,7 @@ $("button").on("click", function () {
         
           var eventImage = $("<img>");
           eventImage.addClass("card-image")
-          eventImage.attr("src", response._embedded.events[i].images[0].url );
+          eventImage.attr("src", response._embedded.events[i].images[0].url);
 
           var eventVenue = $("<p>").text("Venue: " + response._embedded.events[i]._embedded.venues[0].name);
           eventVenue.addClass("card-body");
@@ -126,8 +126,7 @@ $("button").on("click", function () {
         var filmName = response.films[i].film_name;
         var filmImage = response.films[i].images.poster[1].medium.film_image;
         var filmSynopsis = response.films[i].synopsis_long;
-        var filmId = response.films[i].film_id;
-        filmIds.push(filmId);
+
 
         
           
@@ -158,7 +157,7 @@ $("button").on("click", function () {
         };
 
       });
-    
+     
 
         
 });
