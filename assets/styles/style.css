@@ -1,48 +1,53 @@
-
-#background{
+body {
+  font-family: 'Roboto, sans-serif';
+}
+.jumbotron{
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
     height: 100%;
-
+    opacity: 75%;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    background-image: url("https://www.fourthwallevents.com/wp-content/uploads/2016/12/SetWidth1920-A-championship-event10.jpg"); 
+    background-image: url("https://concertpass.net/wp-content/uploads/2015/02/concert-crowd-2000x650.jpg"); 
 }
 
 #search {
-    margin-left: 330px;
-    width: 50%
-    
+  margin-left: 330px;
+  width: 50%;
+  color: black;
+  border: black;    
 }
-img{
-    width: 14rem;
+#form-control{
+  color: black;
 }
-
 .jumbotron h1{
-  color: white;
+  color: whitesmoke;
   font-size: 100px;
   font-weight: bold;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  opacity: 100%;
 }
-
 #ex{
-  color: white;
+  color: white;;
   font-weight: bold;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  opacity: 100%;
 }
 #button-addon2{
-  color: black;
-  background-color: whitesmoke;
+  color: white;
+  border: black;
+  font-family: 'Roboto, sans-serif';
+  font-weight: bold;
+  background-color: lightslategray;
+  opacity: 100%;
   margin-left: 3px;
 }
-
 #chx{
   color: white;
   font-weight: bold;
+  opacity: 100%;
   text-shadow: -1px 0 w, 0 1px black, 1px 0 black, 0 -1px black;
 }
 

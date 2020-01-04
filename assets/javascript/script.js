@@ -4,8 +4,6 @@ var dateISO = date.toISOString();
 var lat = "";
 var long = "";
 var place = "";
-console.log(dateISO);
-
 
 var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
 google.maps.event.addListener(autocomplete, 'place_changed', function () {
@@ -42,6 +40,7 @@ $("button").on("click", function () {
           var eventLink=response._embedded.events[i].url;
           var eventName = response._embedded.events[i].name;
           var eventDate = response._embedded.events[i].dates.start.localDate;
+          // var eventImage = response._embedded.events[i].images[0].url;
 
           var eventCard = $("<div>");
           eventCard.addClass("card");
@@ -50,9 +49,10 @@ $("button").on("click", function () {
           eventTitle.addClass("card-header-title");
           eventCard.append(eventTitle);
         
-          // var eventImage = $("<img>");
-          // eventImage.addClass("card-image")
-          // eventImage.attr("src", response._embedded.events[i].images[0].url);
+          // var eventThumb = $("<img>");
+          // eventThumb.addClass("card-image");
+          // eventThumb.attr("src", eventImage);
+          // eventCard.append(eventThumb);
 
           var eventVenue = $("<p>").text("Venue: " + response._embedded.events[i]._embedded.venues[0].name);
           eventVenue.addClass("card-body");
@@ -95,9 +95,6 @@ $("button").on("click", function () {
         var filmName = response.films[i].film_name;
         var filmImage = response.films[i].images.poster[1].medium.film_image;
         var filmSynopsis = response.films[i].synopsis_long;
-
-
-        
           
         //create HTML elements for each movie
         var filmCard = $("<div>");
