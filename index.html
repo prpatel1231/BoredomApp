@@ -17,15 +17,15 @@
  
  <div class="container">  
   <div class="jumbotron" id="background">
-    <h1 class="display-4" style="clear:both">Boredom</h1>
+    <h1 class="display-4" style="clear:both">Find Things to Do Near You</h1>
         <div class= "background2">
-          <div class="weather-container">
+          <!-- <div class="weather-container">
             <p class="weatherInfo"></p><br><br>
             <p class="temperature"></p><br>
             <p class="feelsLike"></b></p>
-          </div>
+          </div> -->
         
-        <p class="lead" id="ex">Search for events, restaurants, theaters in your city</p>
+        <p class="lead" id="ex">Search for events, restaurants, movies playing in your city</p>
         <br>
         <div class="input-group mb-3" id="searchAndButton">
           <input type="text" id = "autocomplete" class="form-control" placeholder="Enter city..." aria-label="Enter city..." aria-describedby="button-addon2">
@@ -33,12 +33,12 @@
               <button class="btn btn-outline-secondary" type="Search" id="button-addon2">Search</button>
             </div>
         </div>
-          <form id="chx" action="/action_page.php">
+          <!-- <form id="chx" action="/action_page.php">
             <input  type="checkbox" name="event1" value="events">Events<br>
             <input  type="checkbox" name="event2" value="Car">Restaurants<br>
             <input  type="checkbox" name="event3" value="Boat">Movies<br><br>
             <input  type="checkbox" name="event4" value="Boat">Select All<br>
-          </form>
+          </form> -->
         </div>
   </div>
 </div>
@@ -46,6 +46,7 @@
 <div class ="results container">
   <div class = "events card" id="events"></div>
   <div class = "movies card" id="movies"></div>
+  <div class = "restaurants card" id="restaurants"></div>
 </div>
 
   <script src="assets/javascript/script.js" charset="utf-8"></script>

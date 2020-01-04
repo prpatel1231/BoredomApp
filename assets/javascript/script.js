@@ -3,7 +3,8 @@ var date = new Date();
 var dateISO = date.toISOString();
 var lat = ""
 var long = ""
-var filmIds = [];
+var hasSearched = false;
+
 
 var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
 google.maps.event.addListener(autocomplete, 'place_changed', function () {
@@ -19,12 +20,13 @@ google.maps.event.addListener(autocomplete, 'place_changed', function () {
 
 //click event to search for events and send various API requests
 $("button").on("click", function () {
+
   var city = $("input").val().split();
   var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=f299017fc79bef68bd06401cc604c72e";
 
   var queryURL2= "https://app.ticketmaster.com/discovery/v2/events.json?&city=" + city + "&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc" ;
 
-  //  var queryURL3= "https://developers.zomato.com/api/v2.1/?&apikey=e889ae928be4b3283e45fbbf217c6dfb"
+  var queryURL3= "https://developers.zomato.com/api/v2.1/search?count=20&" + "lat=" + lat + "&lon=" + long + "&radius=10000&sort=rating" + "&apikey=e889ae928be4b3283e45fbbf217c6dfb"
 
 
 //API call for weather data
@@ -97,8 +99,6 @@ $("button").on("click", function () {
         };
 
       
-
-      
       });
 
     //Movie theather API Call
@@ -106,7 +106,7 @@ $("button").on("click", function () {
     var emailMovie = "prpatel1231@gmail.com";
     var apiKeyMovie = "9BucpObgyh59Szs3Kj5wJ6TSI8HCFHee3FVmVQ43";
     var authorizationMovie = "Basic R1dVQjpnT3hiSmJsaHFLYks=";
-    var movieURL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=5"
+    var movieURL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=8"
 
     $.ajax({
       method: "GET",
@@ -158,9 +158,12 @@ $("button").on("click", function () {
         };
 
       });
+    
+
+        
+});
 
   
-      });
 
       
 
