@@ -3,66 +3,32 @@ var date = new Date();
 var dateISO = date.toISOString();
 var lat = "";
 var long = "";
-
+var place = "";
 
 var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
 google.maps.event.addListener(autocomplete, 'place_changed', function () {
-  var place = autocomplete.getPlace();
+  place = autocomplete.getPlace();
   lat = place.geometry.location.lat();
   long = place.geometry.location.lng();
   console.log(lat);
   console.log(long);
-  console.log(place.photos[0].html_attributions[0]);
-  console.log(place);
 });
 
 
 //click event to search for events and send various API requests
 $("button").on("click", function () {
-
-
   var city = $("input").val().split();
-  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=f299017fc79bef68bd06401cc604c72e";
+  var city2 = place.address_components[0].short_name;
+  var state = place.address_components[2].short_name;
 
-  var queryURL2= "https://app.ticketmaster.com/discovery/v2/events.json?&city=" + city + "&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc";
+  var today = new Date();
+  today.setMonth(today.getMonth()+1)
+  var dateTime = today.toISOString().split('.')[0]+"Z";
+  var ticketMasterEventURL= "https://app.ticketmaster.com/discovery/v2/events.json?&city=" + city2 +"&stateCode=" + state + "&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc" + "&endDateTime=" + dateTime +"&sort=date,asc&size=10";
 
-  // var queryURL3= "https://developers.zomato.com/api/v2.1/search?count=20&" + "lat=" + lat + "&lon=" + long + "&radius=10000&sort=rating" + "&apikey=e889ae928be4b3283e45fbbf217c6dfb"
-
-
-//API call for weather data
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  })
-
-    // After the data from the AJAX request comes back
-    .then(function (response) {
-      console.log(response);
-      var temperatureCelvin = [response.main.temp, response.main.feels_like];
-      var temperature = (temperatureCelvin[0] -273.15) * 9/5 + 32;
-      temperature = Math.round(temperature);
-      var temperatureFeelsLikeF = (temperatureCelvin[1]-273.15) * 9/5 + 32;
-      temperatureFeelsLikeF= Math.round(temperatureFeelsLikeF);
-      
-      
-      var weatherImage = $("<img>");
-      weatherImage.attr("src", "https://www.almanac.com/sites/default/files/styles/primary_image_in_article/public/image_nodes/cloudy-sky.jpg?itok=FDxeE-I5");
-      $(".weather container").prepend(weatherImage);
-
-
-      var TextHeader = "Weather info:"
-      $(".weatherInfo").prepend(city);
-
-
-      $(".temperature").prepend(temperature + "°F");
-      
-      $(".feelsLike").prepend("Feels like: " +temperatureFeelsLikeF + "°F");
-
-          
-    });
 //Ticketmaster API call
   $.ajax({
-      url: queryURL2,
+      url: ticketMasterEventURL,
       method: "GET"
     })
   
@@ -71,42 +37,42 @@ $("button").on("click", function () {
         console.log(response);
 
         for (var i = 0; i <= response._embedded.events.length; i++){
-          var eventLink=response._embedded.events[i].url;
-
-          var eventButton = $("<button>").text("Buy Ticket");
-          eventButton.addClass("button is-link")
-          eventButton.attr("onclick", "window.location.href='"+ eventLink+"';");
-        
+          var eventLink = response._embedded.events[i].url;
           var eventName = response._embedded.events[i].name;
+          var eventDate = response._embedded.events[i].dates.start.localDate;
+          // var eventImage = response._embedded.events[i].images[0].url;
 
-          var eventTitle = $("<h5>").text(eventName);
+          var eventCard = $("<div>");
+          eventCard.addClass("card");
+
+          var eventTitle = $("<h5>").text(eventName + ": " + eventDate);
           eventTitle.addClass("card-header-title");
+          eventCard.append(eventTitle);
         
-          var eventImage = $("<img>");
-          eventImage.addClass("card-image")
-          eventImage.attr("src", response._embedded.events[i].images[0].url);
+          // var eventThumb = $("<img>");
+          // eventThumb.addClass("card-image");
+          // eventThumb.attr("src", eventImage);
+          // eventCard.append(eventThumb);
 
           var eventVenue = $("<p>").text("Venue: " + response._embedded.events[i]._embedded.venues[0].name);
           eventVenue.addClass("card-body");
+          eventCard.append(eventVenue);
 
-          $("#events").append(eventTitle);
+          var eventButton = $("<button>").text("Buy Ticket");
+          eventButton.addClass("button is-dark")
+          eventButton.attr("onclick", "window.location.href='"+ eventLink+"';");
+          eventCard.append(eventButton);
 
-          $("#events").append(eventImage);
-          $("#events").append(eventVenue);
-         
-          $("#events").append(eventButton);
-
-        };
-
-      
+          $("#events").append(eventCard);
+        };      
       });
 
-    //Movie theather API Call
+    //Movie theater API Call
     //Set request variables
     var emailMovie = "prpatel1231@gmail.com";
     var apiKeyMovie = "9BucpObgyh59Szs3Kj5wJ6TSI8HCFHee3FVmVQ43";
     var authorizationMovie = "Basic R1dVQjpnT3hiSmJsaHFLYks=";
-    var movieURL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=8"
+    var movieURL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=10"
 
     $.ajax({
       method: "GET",
@@ -126,9 +92,6 @@ $("button").on("click", function () {
         var filmName = response.films[i].film_name;
         var filmImage = response.films[i].images.poster[1].medium.film_image;
         var filmSynopsis = response.films[i].synopsis_long;
-
-
-        
           
         //create HTML elements for each movie
         var filmCard = $("<div>");
@@ -152,14 +115,10 @@ $("button").on("click", function () {
         filmDescription.addClass("card-content")
         filmCardBody.append(filmDescription);
 
-        
         $("#movies").append(filmCard);
         };
 
-      });
-     
-
-        
+      });     
 });
 
   

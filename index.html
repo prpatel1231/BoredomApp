@@ -10,6 +10,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8h9vcjFAPqyBA1vxtSckeH1oVlsFv7WU&libraries=places"></script>
     <script type="text/javascript" src1="https://app.ticketmaster.com/discovery/v2/events.json?apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
@@ -19,15 +20,9 @@
   <div class="jumbotron" id="background">
     <h1 class="display-4" style="clear:both">Find Things to Do Near You</h1>
         <div class= "background2">
-          <!-- <div class="weather-container">
-            <p class="weatherInfo"></p><br><br>
-            <p class="temperature"></p><br>
-            <p class="feelsLike"></b></p>
-          </div> -->
-        
-        <p class="lead" id="ex">Search for events, restaurants, movies playing in your city</p>
+        <p class="lead" id="ex">Search for events, and movies in your city</p>
         <br>
-        <div class="input-group mb-3" id="searchAndButton">
+        <div class="input-group mb-3" id="search">
           <input type="text" id = "autocomplete" class="form-control" placeholder="Enter city..." aria-label="Enter city..." aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="Search" id="button-addon2">Search</button>
@@ -43,11 +38,20 @@
   </div>
 </div>
 
-<div class ="results container">
-  <div class = "events card" id="events"></div>
-  <div class = "movies card" id="movies"></div>
-  <div class = "restaurants card" id="restaurants"></div>
-</div>
+  <section class = "section">
+    <div class = "container">
+      <div class = "columns">
+        <div class = "column">
+          <h1 class = "title is-1">Events: </h1>
+          <div class = "events card" id="events"></div>  
+        </div>
+        <div class ="column">
+          <h1 class = "title is-1">Movies: </h1>
+          <div class = "movies card" id="movies"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script src="assets/javascript/script.js" charset="utf-8"></script>
 
