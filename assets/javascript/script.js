@@ -24,11 +24,11 @@ $("button").on("click", function () {
   var today = new Date();
   today.setMonth(today.getMonth()+1)
   var dateTime = today.toISOString().split('.')[0]+"Z";
-  var ticketMasterURL= "https://app.ticketmaster.com/discovery/v2/events.json?&city=" + city2 +"&stateCode=" + state + "&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc" + "&endDateTime=" + dateTime +"&sort=date,asc";
+  var ticketMasterEventURL= "https://app.ticketmaster.com/discovery/v2/events.json?&city=" + city2 +"&stateCode=" + state + "&apikey=GVJjPLYlF9CarxYyXYvdEzLb7GD3cXUc" + "&endDateTime=" + dateTime +"&sort=date,asc&size=10";
 
 //Ticketmaster API call
   $.ajax({
-      url: ticketMasterURL,
+      url: ticketMasterEventURL,
       method: "GET"
     })
   
@@ -37,7 +37,7 @@ $("button").on("click", function () {
         console.log(response);
 
         for (var i = 0; i <= response._embedded.events.length; i++){
-          var eventLink=response._embedded.events[i].url;
+          var eventLink = response._embedded.events[i].url;
           var eventName = response._embedded.events[i].name;
           var eventDate = response._embedded.events[i].dates.start.localDate;
           // var eventImage = response._embedded.events[i].images[0].url;
@@ -59,15 +59,12 @@ $("button").on("click", function () {
           eventCard.append(eventVenue);
 
           var eventButton = $("<button>").text("Buy Ticket");
-          eventButton.addClass("button is-link")
+          eventButton.addClass("button is-dark")
           eventButton.attr("onclick", "window.location.href='"+ eventLink+"';");
           eventCard.append(eventButton);
 
           $("#events").append(eventCard);
-
-        };
-
-      
+        };      
       });
 
     //Movie theater API Call
@@ -75,7 +72,7 @@ $("button").on("click", function () {
     var emailMovie = "prpatel1231@gmail.com";
     var apiKeyMovie = "9BucpObgyh59Szs3Kj5wJ6TSI8HCFHee3FVmVQ43";
     var authorizationMovie = "Basic R1dVQjpnT3hiSmJsaHFLYks=";
-    var movieURL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=8"
+    var movieURL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=10"
 
     $.ajax({
       method: "GET",
@@ -118,14 +115,10 @@ $("button").on("click", function () {
         filmDescription.addClass("card-content")
         filmCardBody.append(filmDescription);
 
-        
         $("#movies").append(filmCard);
         };
 
-      });
-     
-
-        
+      });     
 });
 
   
