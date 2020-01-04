@@ -16,9 +16,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-     
-     
-     background-image: url("https://www.fourthwallevents.com/wp-content/uploads/2016/12/SetWidth1920-A-championship-event10.jpg"); 
+    background-image: url("https://www.fourthwallevents.com/wp-content/uploads/2016/12/SetWidth1920-A-championship-event10.jpg"); 
 }
 
 #searchAndButton {
@@ -42,16 +40,13 @@ img{
     color: white;
   }
 
-  .container {
+.weather container {
     position: relative;
     text-align: center;
     width: 14rem;
-    right: 30%;
-   
-
   }
 
-  .wheatherInfo {
+  .weatherInfo {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -61,11 +56,7 @@ img{
     
     font-size: 22px;
     font-weight: bold;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-
-
-
-    
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;    
   }
   .temperature {
     position: absolute;
@@ -76,11 +67,6 @@ img{
     font-size: 30px;
     font-weight: bold;
     text-shadow: -1px 0 rgb(247, 244, 244), 0 1px rgb(250, 248, 248), 1px 0 rgb(250, 248, 248), 0 -1px rgb(250, 248, 248);
-
-
-
-
-    
     
   }
   .feelsLike {
@@ -92,18 +78,11 @@ img{
     font-size: 18px;
     font-weight: bold;
     text-shadow: -1px 0 rgb(247, 244, 244), 0 1px rgb(250, 248, 248), 1px 0 rgb(250, 248, 248), 0 -1px rgb(250, 248, 248);
-
-
-
-
-
-    
   }
-h1{
-  
+
+.jumbotron h1{
   color: white;
-  
-  font-size: 255px;
+  font-size: 100px;
   font-style: italic;
   font-weight: bold;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -127,4 +106,12 @@ h1{
   font-style: italic;
   font-weight: bold;
   text-shadow: -1px 0 w, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#events.card{
+  margin-bottom: 10px;
+}
+
+.card{
+  margin-bottom: 10px;
 }
